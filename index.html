@@ -70,7 +70,6 @@
         height: 110px;
         position: relative;
         overflow: hidden;
-        background-image: url("resources/sponsorneededbackground.png");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -205,6 +204,7 @@
         font-size: 13px;
         padding: 3px 14px 5px;
         margin-top: 3px;
+        cursor: pointer;
       }
 
       .featurecard .bottmbtn {
@@ -383,6 +383,96 @@
     gap: 6px;
   }
 
+#infoshi {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 1000;
+    visibility: hidden;
+}
+
+.infoshicard {
+  width: 500px;
+  height: 400px;
+  position: fixed;
+  background-color: #111111;
+  border-color: #1F1F1F;
+  border-radius: 5px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  top: 50%;
+  border-style: solid;
+  border-width: 1px;
+
+}
+
+.infoshitop {
+  width: 100%;
+  height: 40px;
+}
+
+.clientnameinfoshi {
+  font-size: 14;
+  color: white;
+  font-weight: 500;
+  position: relative;
+  left: 10;
+  top: 6;
+  
+}
+
+.inshiic {
+  position: relative;
+  left: 9;
+  top: 8;
+}
+
+.ytvideoinfoshi {
+  width: 480px;
+  height: 100px;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 60;
+  background-image: url('yt link ai');
+  border-radius: 5px;
+  border-color: 1F1F1F;
+  border-style: solid;
+  border-width: 1px;
+}
+
+#topsponsorframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 1;
+   object-fit: cover; 
+   filter: blur(4px);
+  transform: scale(1.05);
+}
+
+#topsponsor .content-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2; 
+}
+
+#spponsorshiplogo {
+  position: absolute;
+  z-index: 5;
+  width: 300;
+  height: 30;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  object-fit: cover; 
+}
+
     </style>
   </head>
 
@@ -398,10 +488,13 @@
     </div>
 
     <div id="mainareathing">
-      <div id="topsponsor" class="card1">
-             <img src="resources/mainlogo.png" class="whcsspn"  alt="">
-        <button class="bottmbtn spnsrus" onclick="window.open(' https://discord.gg/AntxrTtAtR', '_blank')">Sponsor Us</button>
-    
+      
+      <div id="topsponsor" class="card1" onclick="window.open('https://discord.gg/Fr8c5acysh', '_blank')">
+       <video id="topsponsorframe" autoplay muted loop playsinline>
+    <source src="resources/marlowvid.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+      <img id="spponsorshiplogo" src="resources/marlowsponsor.png" alt="">
       </div>
 
       <div id="rightsponsor" class="card1">
@@ -830,7 +923,7 @@
             </h1>
             <h1 class="featuretext">
               <div class="sidelineidkbro"></div>
-              Great Visuals
+              Heavily Customizable
             </h1>
             <h1 class="featuretext">
               <div class="sidelineidkbro"></div>
@@ -968,7 +1061,7 @@
             </h1>
             <h1 class="featuretext">
               <div class="sidelineidkbro"></div>
-              Not Well Maintained
+              Well Maintained
             </h1>
             <button class="bottmbtn" onclick="window.open('https://entropy.club/#faq', '_blank')">
               <svg
@@ -1391,6 +1484,30 @@
               >Info
             </button>
           </div>
+        </div>
+        <div id="infoshi">
+          <div class="infoshicard">
+            <div class="infoshitop">
+              <h1 class="clientname clientnameinfoshi">    <svg
+              class="clienticon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 4 4"
+            >
+              <path
+                d="M1.875 0C1.37789 0.000568624 0.90131 0.198295 0.549803 0.549803C0.198295 0.90131 0.000568628 1.37789 3.51531e-09 1.875V3.75C-6.27198e-06 3.77959 0.00838965 3.80857 0.024211 3.83358C0.0400323 3.85858 0.0626285 3.87858 0.0893708 3.89125C0.116113 3.90391 0.145902 3.90872 0.175272 3.90512C0.204641 3.90152 0.232385 3.88965 0.255273 3.8709L0.729102 3.4832L1.20312 3.8709C1.23104 3.89373 1.26599 3.9062 1.30205 3.9062C1.33811 3.9062 1.37306 3.89373 1.40098 3.8709L1.875 3.4832L2.34902 3.8709C2.37694 3.89373 2.41189 3.9062 2.44795 3.9062C2.48401 3.9062 2.51896 3.89373 2.54687 3.8709L3.0209 3.4832L3.49473 3.8709C3.51762 3.88965 3.54536 3.90152 3.57473 3.90512C3.6041 3.90872 3.63389 3.90391 3.66063 3.89125C3.68737 3.87858 3.70997 3.85858 3.72579 3.83358C3.74161 3.80857 3.75001 3.77959 3.75 3.75V1.875C3.74943 1.37789 3.5517 0.90131 3.2002 0.549803C2.84869 0.198295 2.37211 0.000568624 1.875 0ZM1.32812 2.03125C1.28177 2.03125 1.23646 2.0175 1.19791 1.99175C1.15937 1.966 1.12933 1.92939 1.11159 1.88657C1.09385 1.84374 1.08921 1.79661 1.09825 1.75115C1.1073 1.70569 1.12962 1.66392 1.1624 1.63115C1.19517 1.59837 1.23694 1.57605 1.2824 1.567C1.32786 1.55796 1.37499 1.5626 1.41782 1.58034C1.46064 1.59808 1.49725 1.62812 1.523 1.66666C1.54875 1.70521 1.5625 1.75052 1.5625 1.79688C1.5625 1.85904 1.53781 1.91865 1.49385 1.9626C1.4499 2.00656 1.39029 2.03125 1.32812 2.03125ZM2.42188 2.03125C2.37552 2.03125 2.33021 2.0175 2.29166 1.99175C2.25312 1.966 2.22308 1.92939 2.20534 1.88657C2.1876 1.84374 2.18296 1.79661 2.192 1.75115C2.20105 1.70569 2.22337 1.66392 2.25615 1.63115C2.28892 1.59837 2.33069 1.57605 2.37615 1.567C2.42162 1.55796 2.46874 1.5626 2.51157 1.58034C2.55439 1.59808 2.591 1.62812 2.61675 1.66666C2.6425 1.70521 2.65625 1.75052 2.65625 1.79688C2.65625 1.85904 2.63156 1.91865 2.5876 1.9626C2.54365 2.00656 2.48404 2.03125 2.42188 2.03125Z"
+                fill="#D0D0D0"
+              /></svg
+            >clientname</h1>
+                       <h1 class="infocard meic tsx ftic inshiic" title="LiquidBounce supports all versions.">
+            1.21x
+          </h1>
+            <h1 class="infocard freecard meic inshiic"  >Free</h1>
+            </div>
+            <div class="ytvideoinfoshi">
+
+            </div>
+          </div>
+         
         </div>
 
       </div>
