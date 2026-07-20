@@ -451,7 +451,7 @@
   top: 0;
   z-index: 1;
    object-fit: cover; 
-   filter: blur(4px);
+   filter: blur(10px);
   transform: scale(1.05);
 }
 
@@ -490,8 +490,11 @@
     <div id="mainareathing">
       
       <div id="topsponsor" class="card1" onclick="window.open('https://discord.gg/Fr8c5acysh', '_blank')">
-       
-
+       <video id="topsponsorframe" autoplay muted loop playsinline>
+    <source src="resources/marlowvid.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+      <img id="spponsorshiplogo" src="resources/marlowsponsor.png" alt="">
       </div>
 
       <div id="rightsponsor" class="card1">
