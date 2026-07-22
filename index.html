@@ -1,8 +1,12 @@
 <html>
   <head>
+<title>WHCS - whathcsaresafe</title>
+<meta property="title" content="WHCS - whathcsaresafe" />
+<meta name="description" content=" #1 Minecraft Hacked Client Index. New Filter Clients To Find The Best Hacked Client" />
+<link rel="icon" href="https://whcs.site/resources/smallogo.png">
 <meta property="og:title" content="WHCS - whathcsaresafe" />
 <meta property="og:description" content="#1 Minecraft Client Index" />
-<meta property="og:image" content="https://whcs.site/resources/smalllogo.png" />
+<meta property="og:image" content="https://whcs.site/resources/smallogo.png" />
 <meta property="og:url" content="https://whcs.site" />
 <meta property="og:type" content="website" />
 <meta name="theme-color" content="#b45cdd" />
@@ -83,7 +87,7 @@
         border-width: 2px;
       }
 
-      #rightsponsor {
+      #filter {
         width: 100%;
         min-height: 400px;
         height: 100%;
@@ -96,13 +100,135 @@
         background-repeat: no-repeat;
       }
 
+          .filter-content {
+        padding: 16px 14px;
+        position: relative;
+        z-index: 1;
+        min-height: 100%;
+      }
+
+      .filter-search-wrapper {
+        width: 100%;
+      }
+
+      .filter-input {
+        width: 100%;
+        padding: 10px 14px;
+        background-color: rgba(20, 20, 20, 0.85);
+        border: 1px solid #2a2a2a;
+        border-radius: 4px;
+        color: white;
+        font-family: Inter;
+        font-size: 13px;
+        outline: none;
+        box-sizing: border-box;
+        transition: border-color 0.2s ease;
+      }
+
+      .filter-input:focus {
+        border-color: #b45cdd;
+      }
+
+      .filter-input::placeholder {
+        color: #6a6a6a;
+      }
+
+      .filter-results {
+        color: #8c8c8c;
+        font-family: Inter;
+        font-size: 12px;
+        margin-top: 12px;
+        font-weight: 400;
+      }
+      
+      .filter-options {
+        margin-top: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .filter-group {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .filter-label {
+        color: #8c8c8c;
+        font-family: Inter;
+        font-size: 11px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .filter-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .filter-btn {
+        background-color: #1a1a1a;
+        border: 1px solid transparent;
+        border-radius: 3px;
+        color: #b5b5b5;
+        font-family: Inter;
+        font-size: 12px;
+        font-weight: 400;
+        padding: 4px 12px 5px;
+        cursor: pointer;
+        transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .filter-btn:hover {
+        background-color: #2a2a2a;
+        border-color: #3a3a3a;
+      }
+
+      .filter-btn.active {
+        background-color: #b45cdd;
+        color: #ffffff;
+        border-color: #b45cdd;
+      }
+
+      .filter-btn.active .ghost-icon path {
+        fill: #ffffff;
+      }
+
+      .ghost-btn {
+        align-self: flex-start;
+      }
+
+      .ghost-icon {
+        width: 14px;
+        height: 14px;
+      }
+
+      .ghost-icon path {
+        fill: #b5b5b5;
+        transition: fill 0.2s ease;
+      }
+
+      .filter-btn.active .ghost-icon path {
+        fill: #ffffff;
+      }
+
       #hcsarea {
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
         gap: 10px;
         overflow: visible;
         align-content: start;
+      }
+
+      #hcsarea.compact {
+        grid-template-columns: repeat(auto-fill, 220px);
       }
 
       .hackedc {
@@ -321,7 +447,7 @@
           grid-template-columns: 1fr;
         }
 
-        #rightsponsor {
+        #filter {
           grid-column: 1;
           grid-row: auto;
           min-height: 160px;
@@ -539,8 +665,45 @@
       <img id="spponsorshiplogo" src="resources/marlowsponsor.png" alt="">
       </div>
 
-      <div id="rightsponsor" class="card1">
-        
+      <div id="filter" class="card1">
+        <div class="filter-content">
+          <div class="filter-search-wrapper">
+            <input type="text" id="searchInput" class="filter-input" placeholder="Search clients..." />
+          </div>
+
+          <div class="filter-options">
+            <div class="filter-group">
+              <span class="filter-label">Version</span>
+              <div class="filter-buttons" id="versionFilters">
+                <button class="filter-btn active" data-version="all">All</button>
+                <button class="filter-btn" data-version="1.8x">1.8x</button>
+                <button class="filter-btn" data-version="1.21x">1.21x</button>
+                <button class="filter-btn" data-version="26x">26x</button>
+              </div>
+            </div>
+
+            <div class="filter-group">
+              <span class="filter-label">Price</span>
+              <div class="filter-buttons" id="priceFilters">
+                <button class="filter-btn active" data-price="all">All</button>
+                <button class="filter-btn" data-price="free">Free</button>
+                <button class="filter-btn" data-price="paid">Paid</button>
+              </div>
+            </div>
+
+            <div class="filter-group">
+              <span class="filter-label">Ghost</span>
+              <button id="ghostFilter" class="filter-btn ghost-btn">
+                <svg class="ghost-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 4" width="16" height="16">
+                  <path d="M1.875 0C1.37789 0.000568624 0.90131 0.198295 0.549803 0.549803C0.198295 0.90131 0.000568628 1.37789 3.51531e-09 1.875V3.75C-6.27198e-06 3.77959 0.00838965 3.80857 0.024211 3.83358C0.0400323 3.85858 0.0626285 3.87858 0.0893708 3.89125C0.116113 3.90391 0.145902 3.90872 0.175272 3.90512C0.204641 3.90152 0.232385 3.88965 0.255273 3.8709L0.729102 3.4832L1.20312 3.8709C1.23104 3.89373 1.26599 3.9062 1.30205 3.9062C1.33811 3.9062 1.37306 3.89373 1.40098 3.8709L1.875 3.4832L2.34902 3.8709C2.37694 3.89373 2.41189 3.9062 2.44795 3.9062C2.48401 3.9062 2.51896 3.89373 2.54687 3.8709L3.0209 3.4832L3.49473 3.8709C3.51762 3.88965 3.54536 3.90152 3.57473 3.90512C3.6041 3.90872 3.63389 3.90391 3.66063 3.89125C3.68737 3.87858 3.70997 3.85858 3.72579 3.83358C3.74161 3.80857 3.75001 3.77959 3.75 3.75V1.875C3.74943 1.37789 3.5517 0.90131 3.2002 0.549803C2.84869 0.198295 2.37211 0.000568624 1.875 0ZM1.32812 2.03125C1.28177 2.03125 1.23646 2.0175 1.19791 1.99175C1.15937 1.966 1.12933 1.92939 1.11159 1.88657C1.09385 1.84374 1.08921 1.79661 1.09825 1.75115C1.1073 1.70569 1.12962 1.66392 1.1624 1.63115C1.19517 1.59837 1.23694 1.57605 1.2824 1.567C1.32786 1.55796 1.37499 1.5626 1.41782 1.58034C1.46064 1.59808 1.49725 1.62812 1.523 1.66666C1.54875 1.70521 1.5625 1.75052 1.5625 1.79688C1.5625 1.85904 1.53781 1.91865 1.49385 1.9626C1.4499 2.00656 1.39029 2.03125 1.32812 2.03125ZM2.42188 2.03125C2.37552 2.03125 2.33021 2.0175 2.29166 1.99175C2.25312 1.966 2.22308 1.92939 2.20534 1.88657C2.1876 1.84374 2.18296 1.79661 2.192 1.75115C2.20105 1.70569 2.22337 1.66392 2.25615 1.63115C2.28892 1.59837 2.33069 1.57605 2.37615 1.567C2.42162 1.55796 2.46874 1.5626 2.51157 1.58034C2.55439 1.59808 2.591 1.62812 2.61675 1.66666C2.6425 1.70521 2.65625 1.75052 2.65625 1.79688C2.65625 1.85904 2.63156 1.91865 2.5876 1.9626C2.54365 2.00656 2.48404 2.03125 2.42188 2.03125Z" fill="#D0D0D0"/>
+                </svg>
+                Ghost
+              </button>
+            </div>
+          </div>
+
+          <div class="filter-results" id="resultsCount">Showing all clients</div>
+        </div>
       </div>
 
       <div id="hcsarea">
@@ -562,7 +725,7 @@
           <h1 class="infocard" title="Vape also supports 1.12x, 1.21x 26x">
             1.8x
           </h1>
-            <h1 class="infocard pricecard"  >34.99$ Lifetime</h1>
+            <h1 class="infocard pricecard"  >35$ Lifetime</h1>
           </div>
           <div class="seperator"></div>
           <div class="featurecard">
@@ -754,7 +917,7 @@
           <h1 class="infocard meic tsx ftic" title="LiquidBounce supports all versions.">
             1.21x
           </h1>
-            <h1 class="infocard pricecard meic"  >24.99$ Lifetime</h1>
+            <h1 class="infocard pricecard meic"  >25$ Lifetime</h1>
           </div>
           <div class="seperator"></div>
           <div class="featurecard">
@@ -888,7 +1051,7 @@
           <h1 class="infocard meic tsx" title="LiquidBounce supports all versions.">
             1.8x
           </h1>
-            <h1 class="infocard pricecard meic"  >14.99$ Monthly</h1>
+            <h1 class="infocard pricecard meic"  >15$ Monthly</h1>
           </div>
           <div class="seperator"></div>
           <div class="featurecard">
@@ -955,7 +1118,7 @@
           <h1 class="infocard meic tsx" title="LiquidBounce supports all versions.">
             26x
           </h1>
-            <h1 class="infocard pricecard meic"  >14.95$ Monthly</h1>
+            <h1 class="infocard pricecard meic"  >15$ Monthly</h1>
           </div>
           <div class="seperator"></div>
           <div class="featurecard">
@@ -1022,7 +1185,7 @@
           <h1 class="infocard meic tsx" title="LiquidBounce supports all versions.">
             1.8x
           </h1>
-            <h1 class="infocard pricecard meic"  >9.99$ Monthly</h1>
+            <h1 class="infocard pricecard meic"  >10$ Monthly</h1>
           </div>
           <div class="seperator"></div>
           <div class="featurecard">
@@ -1287,7 +1450,7 @@
           <h1 class="infocard meic tsx" title="LiquidBounce supports all versions.">
             1.8x
           </h1>
-            <h1 class="infocard pricecard meic"  >91.56$ Lifetime</h1>
+            <h1 class="infocard pricecard meic"  >95$ Lifetime</h1>
           </div>
           <div class="seperator"></div>
           <div class="featurecard">
@@ -1351,7 +1514,7 @@
           <h1 class="infocard meic tsx" title="LiquidBounce supports all versions.">
             1.8x
           </h1>
-            <h1 class="infocard pricecard meic"  >34.99$ Lifetime</h1>
+            <h1 class="infocard pricecard meic"  >35$ Lifetime</h1>
           </div>
           <div class="seperator"></div>
           <div class="featurecard">
@@ -1415,7 +1578,7 @@
           <h1 class="infocard meic tsx" title="LiquidBounce supports all versions.">
             26x
           </h1>
-            <h1 class="infocard pricecard meic"  >19.99$ Lifetime</h1>
+            <h1 class="infocard pricecard meic"  >20$ Lifetime</h1>
           </div>
           <div class="seperator"></div>
           <div class="featurecard">
@@ -1545,7 +1708,7 @@
           <h1 class="infocard meic tsx ftic" title="LiquidBounce supports all versions.">
             1.21x
           </h1>
-            <h1 class="infocard pricecard meic"  >9.99$ Lifetime</h1>
+            <h1 class="infocard pricecard meic"  >10$ Lifetime</h1>
           </div>
           <div class="seperator"></div>
           <div class="featurecard">
@@ -1635,12 +1798,124 @@
   </div>
 </footer>
   </body>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TPL3D95JPD"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TPL3D95JPD"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-TPL3D95JPD');
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var searchInput = document.getElementById('searchInput');
+    var clientCards = document.querySelectorAll('.hackedc');
+    var resultsCount = document.getElementById('resultsCount');
+    var filters = {
+      version: 'all',
+      price: 'all',
+      ghost: false,
+      search: ''
+    };
+
+    var GHOST_ICON_PATH = 'M1.875 0C1.37789 0.000568624 0.90131 0.198295 0.549803 0.549803C0.198295 0.90131 0.000568628 1.37789 3.51531e-09 1.875V3.75C-6.27198e-06 3.77959 0.00838965 3.80857 0.024211 3.83358C0.0400323 3.85858 0.0626285 3.87858 0.0893708 3.89125C0.116113 3.90391 0.145902 3.90872 0.175272 3.90512C0.204641 3.90152 0.232385 3.88965 0.255273 3.8709L0.729102 3.4832L1.20312 3.8709C1.23104 3.89373 1.26599 3.9062 1.30205 3.9062C1.33811 3.9062 1.37306 3.89373 1.40098 3.8709L1.875 3.4832L2.34902 3.8709C2.37694 3.89373 2.41189 3.9062 2.44795 3.9062C2.48401 3.9062 2.51896 3.89373 2.54687 3.8709L3.0209 3.4832L3.49473 3.8709C3.51762 3.88965 3.54536 3.90152 3.57473 3.90512C3.6041 3.90872 3.63389 3.90391 3.66063 3.89125C3.68737 3.87858 3.70997 3.85858 3.72579 3.83358C3.74161 3.80857 3.75001 3.77959 3.75 3.75V1.875C3.74943 1.37789 3.5517 0.90131 3.2002 0.549803C2.84869 0.198295 2.37211 0.000568624 1.875 0ZM1.32812 2.03125C1.28177 2.03125 1.23646 2.0175 1.19791 1.99175C1.15937 1.966 1.12933 1.92939 1.11159 1.88657C1.09385 1.84374 1.08921 1.79661 1.09825 1.75115C1.1073 1.70569 1.12962 1.66392 1.1624 1.63115C1.19517 1.59837 1.23694 1.57605 1.2824 1.567C1.32786 1.55796 1.37499 1.5626 1.41782 1.58034C1.46064 1.59808 1.49725 1.62812 1.523 1.66666C1.54875 1.70521 1.5625 1.75052 1.5625 1.79688C1.5625 1.85904 1.53781 1.91865 1.49385 1.9626C1.4499 2.00656 1.39029 2.03125 1.32812 2.03125ZM2.42188 2.03125C2.37552 2.03125 2.33021 2.0175 2.29166 1.99175C2.25312 1.966 2.22308 1.92939 2.20534 1.88657C2.1876 1.84374 2.18296 1.79661 2.192 1.75115C2.20105 1.70569 2.22337 1.66392 2.25615 1.63115C2.28892 1.59837 2.33069 1.57605 2.37615 1.567C2.42162 1.55796 2.46874 1.5626 2.51157 1.58034C2.55439 1.59808 2.591 1.62812 2.61675 1.66666C2.6425 1.70521 2.65625 1.75052 2.65625 1.79688C2.65625 1.85904 2.63156 1.91865 2.5876 1.9626C2.54365 2.00656 2.48404 2.03125 2.42188 2.03125Z';
+
+    function getClientVersion(card) {
+      var infos = card.querySelectorAll('.infocard');
+      for (var i = 0; i < infos.length; i++) {
+        var text = infos[i].textContent.trim();
+        if (/^(1\.8x|26x|1\.21x|All)$/i.test(text)) {
+          return text.toLowerCase();
+        }
+      }
+      return '';
+    }
+
+    function getClientPrice(card) {
+      var free = card.querySelector('.freecard');
+      return free ? 'free' : 'paid';
+    }
+
+    function hasGhostIcon(card) {
+      var nameEl = card.querySelector('.clientname');
+      if (!nameEl) return false;
+      var svg = nameEl.querySelector('svg');
+      if (!svg) return false;
+      var path = svg.querySelector('path');
+      if (!path) return false;
+      var d = path.getAttribute('d');
+      if (!d) return false;
+      return d.indexOf('M1.875 0C1.37789') !== -1;
+    }
+
+    function applyFilters() {
+      var query = filters.search.toLowerCase().trim();
+      var versionFilter = filters.version;
+      var priceFilter = filters.price;
+      var ghostFilter = filters.ghost;
+      var visibleCount = 0;
+
+      for (var i = 0; i < clientCards.length; i++) {
+        var card = clientCards[i];
+        var text = card.textContent.toLowerCase();
+        var version = getClientVersion(card);
+        var price = getClientPrice(card);
+        var ghost = hasGhostIcon(card);
+        var show = true;
+
+        if (query && text.indexOf(query) === -1) show = false;
+        if (show && versionFilter !== 'all' && version !== versionFilter) show = false;
+        if (show && priceFilter !== 'all' && price !== priceFilter) show = false;
+        if (show && ghostFilter && !ghost) show = false;
+
+        if (show) {
+          card.style.display = '';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      }
+
+      resultsCount.textContent = visibleCount === 0 ? 'No clients found' : 'Showing ' + visibleCount + ' client' + (visibleCount > 1 ? 's' : '');
+    }
+
+    var versionBtns = document.querySelectorAll('#versionFilters .filter-btn');
+    for (var i = 0; i < versionBtns.length; i++) {
+      versionBtns[i].addEventListener('click', function() {
+        var btns = document.querySelectorAll('#versionFilters .filter-btn');
+        for (var j = 0; j < btns.length; j++) btns[j].classList.remove('active');
+        this.classList.add('active');
+        filters.version = this.getAttribute('data-version');
+        applyFilters();
+      });
+    }
+
+    var priceBtns = document.querySelectorAll('#priceFilters .filter-btn');
+    for (var i = 0; i < priceBtns.length; i++) {
+      priceBtns[i].addEventListener('click', function() {
+        var btns = document.querySelectorAll('#priceFilters .filter-btn');
+        for (var j = 0; j < btns.length; j++) btns[j].classList.remove('active');
+        this.classList.add('active');
+        filters.price = this.getAttribute('data-price');
+        applyFilters();
+      });
+    }
+
+    var ghostBtn = document.getElementById('ghostFilter');
+    if (ghostBtn) {
+      ghostBtn.addEventListener('click', function() {
+        this.classList.toggle('active');
+        filters.ghost = this.classList.contains('active');
+        applyFilters();
+      });
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener('input', function() {
+        filters.search = this.value;
+        applyFilters();
+      });
+    }
+
+    applyFilters();
+  });
 </script>
 </html>
